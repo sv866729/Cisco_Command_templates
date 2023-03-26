@@ -1,0 +1,25 @@
+
+#
+print(f"""""")
+#
+print(f"""""")
+#
+print(f"""""")
+#
+print(f"""""")
+#
+print(f"""""")
+
+
+
+
+#
+print(f"""
+en
+config t
+interface {}
+no shutdown
+ex
+""")
+
+

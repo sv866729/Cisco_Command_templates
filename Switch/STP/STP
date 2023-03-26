@@ -1,0 +1,42 @@
+# Prompt the user for input
+vlan_id = input("Enter VLAN ID: ")
+primary_or_secondary = input("Enter bridge priority (primary or secondary): ")
+
+# Elect a Root Bridge
+# Place root interfaces into a Forwarding state
+# Each non-root switch selects its Root Port
+# Remaining links choose a Designated Port
+# All other ports are put in to a Blocking state
+
+# Roles
+# Root Ports The best port to reach the Root Bridge
+# Designated Port Port with the best route to the Root Bridge a link
+# Non-Designated Port All other ports that are in a blocking state
+
+# States
+# Disabled A port that is shutdown Blocking A port that is blocking traffic
+# Listening Not forwarding traffic and not learning MAC addresses
+# Learning Not forwarding traffic but learning MAC addresses
+# Forwarding Sending and receiving traffic like normal
+
+# Default Enabled
+
+# Configure this on host device port IE workstations and servers
+print("[Host ONLY ports]")
+
+# Show Commands
+print("""
+[Show Commands]
+show spanning-tree vlan
+show spanning-tree summary
+show spanning-tree detail
+show spanning-tree bridge
+""")
+
+# Set bridge priority to either primary or secondary
+print(f"""
+[Change Priority]
+en
+config t
+spanning-tree vlan {vlan_id} root {primary_or_secondary}
+""")
